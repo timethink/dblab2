@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+    <h1>Students</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Sex</th>
+                <th>Birth Date</th>
+                <th>Grade</th>
+                <th>Class ID</th>
+                <th>Major ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student['id'] }}</td>
+                <td>{{ student['name'] }}</td>
+                <td>{{ student['sex'] }}</td>
+                <td>{{ student['birth_date'] }}</td>
+                <td>{{ student['grade'] }}</td>
+                <td>{{ student['class_id'] }}</td>
+                <td>{{ student['major_id'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('filter_student') }}">
+        <button type="button">Filter Students</button>
+    </a>
+    <a href="{{ url_for('add_student') }}">
+        <button type="button">Add Student</button>
+    </a>
+    <a href="{{ url_for('delete_student') }}">
+        <button type="button">Delete Student</button>
+    </a>
+    <a href="{{ url_for('index') }}">
+        <button type="button">Home</button>
+</body>
+</html>

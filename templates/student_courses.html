@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Courses</title>
+</head>
+<body>
+    <h1>Student Courses</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Course ID</th>
+                <th>Study Time</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student_course in student_courses %}
+            <tr>
+                <td>{{ student_course['student_id'] }}</td>
+                <td>{{ student_course['course_id'] }}</td>
+                <td>{{ student_course['study_time'] }}</td>
+                <td>{{ student_course['score'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('add_student_course') }}">
+        <button type="button">Add Student Course</button>
+    </a>
+    <a href="{{ url_for('update_student_course') }}">
+        <button type="button">Update Student Course</button>
+    </a>
+    <a href="{{ url_for('delete_student_course') }}">
+        <button type="button">Delete Student Course</button>
+    </a>
+    <a href="{{ url_for('index') }}">
+        <button type="button">Home</button>
+    </a>
+</body>
+</html>

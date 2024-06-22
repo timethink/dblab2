@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classes</title>
+</head>
+<body>
+    <h1>Classes</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Number</th>
+                <th>Class Teacher</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for class in classes %}
+            <tr>
+                <td>{{ class['id'] }}</td>
+                <td>{{ class['number'] }}</td>
+                <td>{{ class['class_teacher'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('add_class') }}">
+        <button type="button">Add Class</button>
+    </a>
+    <a href="{{ url_for('update_class_teacher') }}">
+        <button type="button">Update Class Teacher</button>
+    </a>
+    <a href="{{ url_for('index') }}">
+        <button type="button">Home</button>
+</body>
+</html>

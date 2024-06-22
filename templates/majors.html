@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Majors</title>
+</head>
+<body>
+    <h1>Majors</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for major in majors %}
+            <tr>
+                <td>{{ major['id'] }}</td>
+                <td>{{ major['name'] }}</td>
+                <td>{{ major['number'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('add_major') }}">
+        <button type="button">Add Major</button>
+    </a>
+    <a href="{{ url_for('update_major_name') }}">
+        <button type="button">Update Major Name</button>
+    </a>
+    <a href="{{ url_for('change_major') }}">
+        <button type="button">Change Major</button>
+    </a>
+    <a href="{{ url_for('index') }}">
+        <button type="button">Home</button>
+</body>
+</html>

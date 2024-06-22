@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <h1>Welcome to the Student Management System</h1>
+    <img id="mainImage" src="{{ url_for('static', filename='scenery.jpg') }}" alt="Scenery" style="width:100%; height:auto;">
+    
+    <!-- 文件上传表单 -->
+    <form id="uploadForm" action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*">
+        <input type="submit" value="Upload New Image">
+    </form>
+    
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('classes') }}">Classes</a></li>
+            <li><a href="{{ url_for('courses') }}">Courses</a></li>
+            <li><a href="{{ url_for('majors') }}">Majors</a></li>
+            <li><a href="{{ url_for('students') }}">Students</a></li>
+            <li><a href="{{ url_for('student_courses') }}">Student Courses</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        // 使用 JavaScript 监听表单提交事件，实现动态更新图片
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            var formData = new FormData(this); // 创建表单数据对象
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text(); // 假设返回的是新图片的文件名，你需要根据实际返回值调整
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+                // 在成功上传后更新图片
+                var img = document.getElementById('mainImage');
+                img.src = '{{ url_for("static", filename="images/") }}' + data; // 更新图片的 URL
+                alert('Image uploaded successfully and replaced.');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to upload image.');
+            });
+        });
+    </script>
+</body>
+</html>

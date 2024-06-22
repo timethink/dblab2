@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+</head>
+<body>
+    <h1>Courses</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Credit</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course['id'] }}</td>
+                <td>{{ course['credit'] }}</td>
+                <td>{{ course['name'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('add_course') }}">
+        <button type="button">Add Course</button>
+    </a>
+    <a href="{{ url_for('delete_course') }}">
+        <button type="button">Delete Course</button>
+    <a href="{{ url_for('index') }}">
+        <button type="button">Home</button>
+</body>
+</html>

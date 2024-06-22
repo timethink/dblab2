@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filtered Student Info</title>
+</head>
+<body>
+    <h1>Filtered Student Info</h1>
+    <form action="{{ url_for('filter_student') }}" method="POST">
+        <label for="student_id">Enter Student ID:</label>
+        <input type="text" id="student_id" name="id">
+        <button type="submit">Filter</button>
+    </form>
+    <br>
+    {% if student %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Sex</th>
+                    <th>Birth Date</th>
+                    <th>Grade</th>
+                    <th>Class ID</th>
+                    <th>Major ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ student['id'] }}</td>
+                    <td>{{ student['name'] }}</td>
+                    <td>{{ student['sex'] }}</td>
+                    <td>{{ student['birth_date'] }}</td>
+                    <td>{{ student['grade'] }}</td>
+                    <td>{{ student['class_id'] }}</td>
+                    <td>{{ student['major_id'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <p>No student found with ID: {{ request.form['id'] }}</p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('add_student') }}">
+        <button type="button">Add Student</button>
+    </a>
+    <a href="{{ url_for('delete_student') }}">
+        <button type="button">Delete Student</button>
+    </a>
+    <a href="{{ url_for('index') }}">
+        <button type="button">Home</button>
+    </a>
+</body>
+</html>
